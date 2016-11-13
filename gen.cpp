@@ -1,7 +1,3 @@
-// sort.cpp: определяет точку входа для консольного приложения.
-//
-
-#include "stdafx.h"
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -11,11 +7,11 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	std::ifstream last_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\Фамилии.txt");
+	std::ifstream last_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\Р¤Р°РјРёР»РёРё.txt");
 	std::string last[503];
-	std::ifstream male_first_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\Мужские имена.txt");
+	std::ifstream male_first_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\РњСѓР¶СЃРєРёРµ РёРјРµРЅР°.txt");
 	std::string male[100];
-	std::ifstream female_first_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\Женские имена.txt");
+	std::ifstream female_first_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\Р–РµРЅСЃРєРёРµ РёРјРµРЅР°.txt");
 	std::string female[100];
 	size_t t = 0;
 	while (!last_name.eof() ) {

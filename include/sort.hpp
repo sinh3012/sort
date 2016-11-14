@@ -124,7 +124,7 @@ void allsort(std::string filename_, size_t count_, size_t memory_)
 		rename(toString(mem_ * 100).c_str(), "sorted.txt");
 	}
 }
-int main()
+void mysort()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);

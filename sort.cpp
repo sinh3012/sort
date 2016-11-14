@@ -1,6 +1,3 @@
-// sort.cpp: îïðåäåëÿåò òî÷êó âõîäà äëÿ êîíñîëüíîãî ïðèëîæåíèÿ.
-//
-
 #include "stdafx.h"
 #include <string>
 #include <vector>
@@ -152,22 +149,6 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	/*std::ifstream file(filename);
-	std::ofstream tempfile;
-	tempfile.open("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\out.txt");
-	std::string temp;
-	std::vector<std::string> str;
-	for (size_t t = 0; t < sizefile; ++t) {
-		std::getline(file, temp);
-		str.push_back(temp);
-	}
-	std::sort(str.begin(), str.end(), byString);
-	for (auto i : str) {
-		tempfile << i << std::endl;
-	}
-	file.close();
-	tempfile.close();*/
-	//unsigned int start_time = clock();
 	piece(filename, count, memory);
 	while (count / 4 > 1 && count % 4 == 0) {
 		for (size_t t = 0; t < count / 4; ++t) {

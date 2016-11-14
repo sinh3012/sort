@@ -3,6 +3,7 @@
 #include <iostream>
 #include <windows.h>
 
+size_t count = 800;
 int main()
 {
 	SetConsoleCP(1251);
@@ -37,7 +38,7 @@ int main()
 	female_first_name.close();
 
 	std::ofstream out_name("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\out_name.txt");
-	for (size_t i = 0; i < 800; ++i) {
+	for (size_t i = 0; i < count; ++i) {
 		std::cout << i << std::endl;
 		out_name << last[rand() % 503];
 		if (rand() % 2)	{

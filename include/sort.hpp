@@ -3,10 +3,9 @@
 #include <fstream>
 #include <iostream>
 #include <sstream>
-#include <windows.h>
 #include <algorithm>
 #include <stdio.h>
-
+//include <windows.h>
 template <typename T>
 std::string toString(T value)
 {
@@ -122,8 +121,8 @@ void allsort(std::string filename_, size_t count_, size_t memory_)
 }
 void mysort()
 {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);
 	std::string filename = "out_name.txt";
 	size_t sizefile = 800;
 	size_t memory = 100;

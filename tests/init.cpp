@@ -4,8 +4,10 @@
 SCENARIO("Init", "[Init]"){
   mysort();
   std::ifstream file1("sorted.txt");
+  REQUIRE(file1.is_open());
   if (!file1.is_open()) throw("no_file");
   std::ifstream file2("sorted1.txt");
+  REQUIRE(file1.is_open());
   if (!file1.is_open()) throw("no_file");
   std::string str1;
   std::string str2;

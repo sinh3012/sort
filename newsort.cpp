@@ -120,8 +120,8 @@ void allsort(std::string filename_, size_t count_, size_t memory_)
 		merge2(toString(100 * mem_), toString(100 * memory_ + count_ - 1), "sorted.txt", mem_, memory_);
 	}
 	else {
-		char * newname = "sorted.txt";
-		rename(toString(mem_ * 100).c_str(), newname);
+		remove("sorted.txt");
+		rename(toString(mem_ * 100).c_str(), "sorted.txt");
 	}
 }
 int main()

@@ -6,6 +6,7 @@
 #include <algorithm>
 #include <stdio.h>
 //#include <windows.h>
+
 template <typename T>
 std::string toString(T value)
 {
@@ -128,6 +129,5 @@ void mysort()
 	size_t memory = 100;
 	allsort(filename, sizefile / memory, memory);
 	system("pause");
-	return 0;
 }
 

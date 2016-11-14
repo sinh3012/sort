@@ -1,4 +1,4 @@
-// sort.cpp: определяет точку входа для консольного приложения.
+// sort.cpp: Г®ГЇГ°ГҐГ¤ГҐГ«ГїГҐГІ ГІГ®Г·ГЄГі ГўГµГ®Г¤Г  Г¤Г«Гї ГЄГ®Г­Г±Г®Г«ГјГ­Г®ГЈГ® ГЇГ°ГЁГ«Г®Г¦ГҐГ­ГЁГї.
 //
 
 #include "stdafx.h"
@@ -9,7 +9,7 @@
 #include <sstream>
 #include <windows.h>
 #include <algorithm>
-#include <ctime>
+//#include <ctime>
 
 std::string filename = "C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\out_name_test.txt";
 size_t sizefile = 160000;
@@ -118,28 +118,28 @@ void merge4(std::string strfile1, std::string strfile2, std::string strfile3, st
 			if (--t1) {
 				std::getline(file1, temp1);
 			}
-			else temp1 = "яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя";
+			else temp1 = "ГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГї";
 		}
 		else if (byString4(temp1, temp2, temp3, temp4) == 2) {
 			tempfile << temp2 << std::endl;
 			if (--t2) {
 				std::getline(file2, temp2);
 			}
-			else temp2 = "яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя";
+			else temp2 = "ГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГї";
 		}
 		else if (byString4(temp1, temp2, temp3, temp4) == 3) {
 			tempfile << temp3 << std::endl;
 			if (--t3) {
 				std::getline(file3, temp3);
 			}
-			else temp3 = "яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя";
+			else temp3 = "ГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГї";
 		}
 		else {
 			tempfile << temp4 << std::endl;
 			if (--t4) {
 				std::getline(file4, temp4);
 			}
-			else temp4 = "Яяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяяя";
+			else temp4 = "ГџГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГїГї";
 		}
 	}
 	file1.close();
@@ -152,7 +152,7 @@ int main()
 {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	std::ifstream file(filename);
+	/*std::ifstream file(filename);
 	std::ofstream tempfile;
 	tempfile.open("C:\\Users\\A\\Documents\\Visual Studio 2015\\Projects\\sort\\out.txt");
 	std::string temp;
@@ -166,8 +166,8 @@ int main()
 		tempfile << i << std::endl;
 	}
 	file.close();
-	tempfile.close();
-	unsigned int start_time = clock();
+	tempfile.close();*/
+	//unsigned int start_time = clock();
 	piece(filename, count, memory);
 	while (count / 4 > 1 && count % 4 == 0) {
 		for (size_t t = 0; t < count / 4; ++t) {
@@ -175,22 +175,18 @@ int main()
 				toString(count * 100 + 4 * t + 3), toString(t + count * 25), memory);
 		}
 		memory *= 4;
-		std::cout << count << std::endl;
 		count /= 4;
-		std::cout << memory << std::endl;
 	}
 	while (count != 1) {
 		for (size_t t = 0; t < count / 2; ++t) {
 			merge2(toString(count * 100 + 2 * t), toString(count * 100 + 2 * t + 1), toString(t + count * 50), memory);
 		}
 		memory *= 2;
-		std::cout << count << std::endl;
 		count /= 2;
-		std::cout << memory << std::endl;
 	}
-	unsigned int end_time = clock(); 
-	unsigned int search_time = end_time - start_time;
-	std::cout << search_time << std::endl;
+	//unsigned int end_time = clock(); 
+	//unsigned int search_time = end_time - start_time;
+	//std::cout << search_time << std::endl;
 	system("pause");
     return 0;
 }

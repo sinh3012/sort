@@ -8,16 +8,17 @@
 //#include <windows.h>
 
 template <typename T>
-std::string toString(T value)
+auto toString(T value) -> std::string
 {
 	std::stringstream oss;
 	oss << value << "_temp.txt";
 	return oss.str();
 }
 
-bool byString(const std::string& a, std::string& b) { return a < b; }
+auto byString(const std::string& a, std::string& b) -> bool { return a < b; }
 
-void piece(std::string const name, size_t count_, size_t memory_) {
+auto piece(std::string const name, size_t count_, size_t memory_) -> void
+{
 	std::ifstream file(name);
 	if (!file.is_open()) throw("no_file");
 	std::ofstream tempfile;
@@ -39,7 +40,8 @@ void piece(std::string const name, size_t count_, size_t memory_) {
 	file.close();
 }
 
-void merge2(std::string strfile1, std::string strfile2, std::string strtempfile, size_t mem1, size_t mem2 ) {
+auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile, size_t mem1, size_t mem2) -> void
+{
 	std::ifstream file1(strfile1);
 	std::ifstream file2(strfile2);
 	std::ofstream tempfile(strtempfile);
@@ -81,26 +83,25 @@ void merge2(std::string strfile1, std::string strfile2, std::string strtempfile,
 	tempfile.close();
 }
 /*void merge(size_t count, std::string strtempfile, size_t mem) {
-	std::ifstream *p = new std::ifstream[count];
-	std::string *ps = new std::string[count];
-	size_t *k = new size_t[count];
-	for (size_t t = 0; t < count; ++t) {
-		p[t].open(toString(t + count * 100));
-		std::getline(p[t], ps[t]);
-		k[t] = mem;
-	}
-	std::ofstream tempfile(strtempfile);
-	while ( {
-	}
-	file1.close();
-	file2.close();
-	remove(strfile1.c_str());
-	remove(strfile2.c_str());
-	tempfile.close();
+std::ifstream *p = new std::ifstream[count];
+std::string *ps = new std::string[count];
+size_t *k = new size_t[count];
+for (size_t t = 0; t < count; ++t) {
+p[t].open(toString(t + count * 100));
+std::getline(p[t], ps[t]);
+k[t] = mem;
 }
-
+std::ofstream tempfile(strtempfile);
+while ( {
+}
+file1.close();
+file2.close();
+remove(strfile1.c_str());
+remove(strfile2.c_str());
+tempfile.close();
+}
 */
-void allsort(std::string filename_, size_t count_, size_t memory_) 
+auto allsort(std::string filename_, size_t count_, size_t memory_) -> void
 {
 	piece(filename_, count_, memory_);
 	size_t num_ = (count_ / 2) * 2;
@@ -120,14 +121,34 @@ void allsort(std::string filename_, size_t count_, size_t memory_)
 		rename(toString(mem_ * 100).c_str(), "sorted.txt");
 	}
 }
-void mysort()
+void main(int argc, char* argv[])
 {
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
-	std::string filename = "out_name.txt";
-	size_t sizefile = 800;
-	size_t memory = 100;
-	allsort(filename, sizefile / memory, memory);
-	system("pause");
+	if (argc == 4) {
+		allsort(static_cast<std::string>(argv[1]), std::atoi(argv[2]) / std::atoi(argv[3]), std::atoi(argv[3]));
+		system("pause");
+	}
+	else if (argc == 5 && argv[1] == "test") {
+		std::string filename1 = argv[2];
+		std::string filename2 = argv[3];
+		std::ifstream file1(filename1);
+		std::ifstream file2(filename2);
+		std::string temp1;
+		std::string temp2;
+		for (int i = 0; i < std::atoi(argv[4]); ++i) {
+			std::getline(file1, temp1);
+			std::getline(file2, temp2);
+			if (temp1 != temp2) {
+				std::cout << "Error " << i << temp1 << temp2 << std::endl;
+				system("pause");
+			}
+		}
+		system("pause");
+	}
+	else {
+		std::cout << "Неверные входные параметры" << std::endl;
+		system("pause");
+	}
 }
 

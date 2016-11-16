@@ -9,7 +9,7 @@
 //#include <windows.h>
 
 template <typename T>
-auto toString(T value) -> std::string
+auto toString(T value) -> std::string //создаем название временного файла
 {
 	std::stringstream oss;
 	oss << value << "_temp.txt";
@@ -18,7 +18,7 @@ auto toString(T value) -> std::string
 
 auto byString(const std::string& a, std::string& b) -> bool { return a < b; }
 
-auto piece(std::string const name, size_t memory_) -> size_t
+auto piece(std::string const name, size_t memory_) -> size_t //разделяем исходный файл на отсортированнные
 {
 	std::ifstream file(name);
 	if (!file.is_open()) throw("no_file");
@@ -46,7 +46,7 @@ auto piece(std::string const name, size_t memory_) -> size_t
 	return t;
 }
 
-auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile) -> void
+auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile) -> void //сливаем 2 файла
 {
 	std::ifstream file1(strfile1);
 	std::ifstream file2(strfile2);
@@ -101,7 +101,7 @@ auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile)
 	rename("temp.txt", strtempfile.c_str());
 }
 
-auto allsort(std::string filename_, size_t memory_) -> void
+auto allsort(std::string filename_, size_t memory_) -> void 
 {
 
 	size_t num_ = piece(filename_, memory_);

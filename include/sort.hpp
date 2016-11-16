@@ -127,7 +127,7 @@ void main(int argc, char* argv[])
 		allsort(static_cast<std::string>(argv[1]), std::atoi(argv[2]));
 		system("pause");
 	}
-	else if (argc == 4 && static_cast<std::string>(argv[1]) == "test") {
+	else if (argc == 4 && static_cast<std::string>(argv[1]) == "test") { //сравниваем содержимое 2 файлов
 		std::string filename1 = argv[2];
 		std::string filename2 = argv[3];
 		std::ifstream file1(filename1);

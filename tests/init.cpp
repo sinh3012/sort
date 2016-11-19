@@ -2,9 +2,9 @@
 #include <catch.hpp>
 
 SCENARIO("mem213", "[mem213]"){
-  allsort("1.txt", 3);
+  allsort("4.txt", 3);
 	std::ifstream file1("sorted.txt");
-	std::ifstream file2("3.txt");
+	std::ifstream file2("4.txt");
 	REQUIRE(file1.is_open());
 	REQUIRE(file2.is_open());
 	std::string temp1;
@@ -14,7 +14,6 @@ SCENARIO("mem213", "[mem213]"){
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
-		REQUIRE(temp2 == "Holmes James 1991");
 		if (temp1 != temp2) {
 			REQUIRE(temp1 != temp2);
       			Q = false;

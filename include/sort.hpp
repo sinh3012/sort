@@ -119,7 +119,7 @@ auto allsort(std::string filename_, size_t memory_) -> void
 	rename(toString(mem_ * 100000).c_str(), "sorted.txt");
 }
 
-void main(int argc, char* argv[])
+/*void main(int argc, char* argv[])
 {
 	//SetConsoleCP(1251);
 	//SetConsoleOutputCP(1251);
@@ -151,3 +151,4 @@ void main(int argc, char* argv[])
 		system("pause");
 	}
 }
+*/

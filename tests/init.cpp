@@ -8,18 +8,21 @@ SCENARIO("mem213", "[mem213]"){
 	REQUIRE(file1.is_open());
 	std::string temp1;
 	std::string temp2;
-	bool Q = true;;
+	bool Q = true;
+	size_t t = 0;
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
 		if (temp1 != temp2) {
-      Q=false;
-      break;
+      			Q = false;
+      			break;
 		}
-  REQUIRE(Q);
-  file1.close();
-  file2.close();
-  }
+		++t;
+	}
+  	REQUIRE(Q);
+	REQUIRE(t == 800000);
+  	file1.close();
+  	file2.close();
 }
 
 SCENARIO("mem2050", "[mem2050]"){
@@ -29,18 +32,21 @@ SCENARIO("mem2050", "[mem2050]"){
 	REQUIRE(file1.is_open());
 	std::string temp1;
 	std::string temp2;
-	bool Q = true;;
+	bool Q = true;
+	size_t t = 0;
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
 		if (temp1 != temp2) {
-      Q=false;
-      break;
+      			Q = false;
+      			break;
 		}
-  REQUIRE(Q);
-  file1.close();
-  file2.close();
-  }
+		++t;
+	}
+  	REQUIRE(Q);
+	REQUIRE(t == 800000);
+  	file1.close();
+  	file2.close();
 }
 
 SCENARIO("mem23456", "[mem23456]"){
@@ -50,16 +56,19 @@ SCENARIO("mem23456", "[mem23456]"){
 	REQUIRE(file1.is_open());
 	std::string temp1;
 	std::string temp2;
-	bool Q = true;;
+	bool Q = true;
+	size_t t = 0;
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
 		if (temp1 != temp2) {
-      Q=false;
-      break;
+      			Q = false;
+      			break;
 		}
-  REQUIRE(Q);
-  file1.close();
-  file2.close();
-  }
+		++t;
+	}
+  	REQUIRE(Q);
+	REQUIRE(t == 800000);
+  	file1.close();
+  	file2.close();
 }

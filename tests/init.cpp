@@ -2,7 +2,7 @@
 #include <catch.hpp>
 
 SCENARIO("mem213", "[mem213]"){
-  allsort("4.txt", 3);
+  allsort("3.txt", 3);
 	std::ifstream file1("sorted.txt");
 	std::ifstream file2("4.txt");
 	REQUIRE(file1.is_open());

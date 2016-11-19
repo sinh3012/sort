@@ -28,7 +28,7 @@ SCENARIO("mem213", "[mem213]"){
   	file1.close();
   	file2.close();
 }
-
+/*
 SCENARIO("mem2050", "[mem2050]"){
   allsort("name.txt", 2500);
 	std::ifstream file1("sorted.txt");
@@ -77,4 +77,4 @@ SCENARIO("mem23456", "[mem23456]"){
 	REQUIRE(Q);
   	file1.close();
   	file2.close();
-}
+}*/

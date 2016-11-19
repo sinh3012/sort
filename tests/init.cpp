@@ -5,8 +5,6 @@ SCENARIO("mem213", "[mem213]"){
   allsort("3.txt", 3);
 	std::ifstream file1("sorted.txt");
 	std::ifstream file2("4.txt");
-	REQUIRE(file1.is_open());
-	REQUIRE(file2.is_open());
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;
@@ -32,8 +30,6 @@ SCENARIO("mem2050", "[mem2050]"){
   allsort("name.txt", 2500);
 	std::ifstream file1("sorted.txt");
 	std::ifstream file2("sorted_test.txt");
-	REQUIRE(file1.is_open());
-	REQUIRE(file2.is_open());
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;
@@ -57,8 +53,6 @@ SCENARIO("mem23456", "[mem23456]"){
   allsort("name.txt", 23456);
 	std::ifstream file1("sorted.txt");
 	std::ifstream file2("sorted_test.txt");
-	REQUIRE(file1.is_open());
-	REQUIRE(file2.is_open());
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;

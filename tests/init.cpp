@@ -1,18 +1,62 @@
 #include "sort.hpp"
 #include <catch.hpp>
 
-SCENARIO("Init", "[Init]"){
-  mysort();
-  std::fstream file1("sorted1.txt");
-  REQUIRE(file1.is_open());
-  if (!file1.is_open()) throw("no_file");
-  std::fstream file2("sorted.txt");
-  REQUIRE(file1.is_open());
-  if (!file1.is_open()) throw("no_file");
-  std::string str1;
-  std::string str2;
-  for (size_t t = 0; t < 800; ++t)
-    std::getline(file1, str1);
-    std::getline(file2, str2);
-    REQUIRE(str1 == str2);
+SCENARIO("mem213", "[mem213]"){
+  allsort("name.txt", 213);
+	std::ifstream file1("sorted.txt");
+	std::ifstream file2("sorted_test.txt");
+	std::string temp1;
+	std::string temp2;
+	bool Q = true;;
+	while (!file1.eof() && !file2.eof()) {
+		std::getline(file1, temp1);
+		std::getline(file2, temp2);
+		if (temp1 != temp2) {
+      Q=false;
+      break;
+		}
+  REQUIRE(Q);
+  file1.close();
+  file2.close();
+  }
+}
+
+SCENARIO("mem2050", "[mem2050]"){
+  allsort("name.txt", 2500);
+	std::ifstream file1("sorted.txt");
+	std::ifstream file2("sorted_test.txt");
+	std::string temp1;
+	std::string temp2;
+	bool Q = true;;
+	while (!file1.eof() && !file2.eof()) {
+		std::getline(file1, temp1);
+		std::getline(file2, temp2);
+		if (temp1 != temp2) {
+      Q=false;
+      break;
+		}
+  REQUIRE(Q);
+  file1.close();
+  file2.close();
+  }
+}
+
+SCENARIO("mem23456", "[mem23456]"){
+  allsort("name.txt", 23456);
+	std::ifstream file1("sorted.txt");
+	std::ifstream file2("sorted_test.txt");
+	std::string temp1;
+	std::string temp2;
+	bool Q = true;;
+	while (!file1.eof() && !file2.eof()) {
+		std::getline(file1, temp1);
+		std::getline(file2, temp2);
+		if (temp1 != temp2) {
+      Q=false;
+      break;
+		}
+  REQUIRE(Q);
+  file1.close();
+  file2.close();
+  }
 }

@@ -2,9 +2,9 @@
 #include <catch.hpp>
 
 SCENARIO("mem213", "[mem213]"){
-  allsort("name.txt", 213);
+  allsort("1.txt", 3);
 	std::ifstream file1("sorted.txt");
-	std::ifstream file2("sorted_test.txt");
+	std::ifstream file2("2.txt");
 	REQUIRE(file1.is_open());
 	REQUIRE(file2.is_open());
 	std::string temp1;
@@ -21,7 +21,7 @@ SCENARIO("mem213", "[mem213]"){
 		}
 		++t;
 	}
-	REQUIRE(t == 800000);
+	REQUIRE(t == 10);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();

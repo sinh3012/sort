@@ -19,8 +19,8 @@ SCENARIO("mem213", "[mem213]"){
 		}
 		++t;
 	}
-  	REQUIRE(Q);
 	REQUIRE(t == 800000);
+  	REQUIRE(Q);
   	file1.close();
   	file2.close();
 }
@@ -43,8 +43,8 @@ SCENARIO("mem2050", "[mem2050]"){
 		}
 		++t;
 	}
-  	REQUIRE(Q);
 	REQUIRE(t == 800000);
+	REQUIRE(Q);
   	file1.close();
   	file2.close();
 }
@@ -67,8 +67,8 @@ SCENARIO("mem23456", "[mem23456]"){
 		}
 		++t;
 	}
-  	REQUIRE(Q);
 	REQUIRE(t == 800000);
+	REQUIRE(Q);
   	file1.close();
   	file2.close();
 }

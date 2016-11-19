@@ -13,8 +13,8 @@ SCENARIO("mem213", "[mem213]"){
 	size_t t = 0;
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
-		REQUIRE(temp2 == "2");
 		std::getline(file2, temp2);
+		REQUIRE(temp2 == "2");
 		if (temp1 != temp2) {
 			REQUIRE(temp1 != temp2);
       			Q = false;

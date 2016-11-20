@@ -92,11 +92,11 @@ auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile)
 		}
 	}
 	file1.close();
-	file2.close();
+	file2.close();	
+	tempfile.close();
 	remove(strfile1.c_str());
 	remove(strfile2.c_str());
 	remove(strtempfile.c_str());
-	tempfile.close();
 	rename("temp.txt", strtempfile.c_str());
 }
 

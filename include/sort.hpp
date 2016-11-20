@@ -47,11 +47,9 @@ auto piece(std::string const name, size_t memory_) -> size_t //разделяе�
 
 auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile) -> void //сливаем 2 файла
 {
-	std::ifstream file1(strfile1);
-	std::ifstream file2(strfile2);
+	std::ifstream file1(strfile1), file2(strfile2);
 	std::ofstream tempfile("temp.txt");
-	std::string temp1;
-	std::string temp2;
+	std::string temp1, temp2;
 	std::getline(file1, temp1);
 	std::getline(file2, temp2);
 	bool k1 = true, k2 = true;

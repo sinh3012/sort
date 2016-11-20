@@ -20,7 +20,7 @@ SCENARIO("memory_very_small", "memory_very_small]"){
 		}
 		++t;
 	}
-	REQUIRE(t == 56972);
+	REQUIRE(t == 5699290);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();
@@ -45,7 +45,7 @@ SCENARIO("memory_small", "memory_small]"){
 		}
 		++t;
 	}
-	REQUIRE(t == 5699290);
+	REQUIRE(t == 56972);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();

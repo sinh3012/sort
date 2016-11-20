@@ -4,7 +4,7 @@
 SCENARIO("mem213", "[mem213]"){
   	allsort("random_very_small.txt", 2);
 	std::ifstream file1("sorted.txt");
-	std::ifstream file2("expected_small.txt");
+	std::ifstream file2("expected_very_small.txt");
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;

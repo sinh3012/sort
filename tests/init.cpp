@@ -2,7 +2,7 @@
 #include <catch.hpp>
 
 SCENARIO("mem213", "[mem213]"){
-  	allsort("in.txt", 2004);
+  	allsort("in.txt", 2);
 	std::ifstream file1("sorted.txt");
 	std::ifstream file2("out.txt");
 	std::string temp1;

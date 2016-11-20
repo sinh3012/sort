@@ -17,7 +17,6 @@ SCENARIO("mem213", "[mem213]"){
       			Q = false;
       			break;
 		}
-		REQUIRE(temp1 == temp2);
 		++t;
 	}
 	REQUIRE(t == 10);

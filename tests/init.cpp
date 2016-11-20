@@ -2,9 +2,9 @@
 #include <catch.hpp>
 
 SCENARIO("memory_very_small", "memory_very_small]"){
-  	allsort("random_medium.txt", 1024 * 1024 * 4);
+  	allsort("name.txt", 2);
 	std::ifstream file1("sorted.txt");
-	std::ifstream file2("expected_medium.txt");
+	std::ifstream file2("name_test.txt");
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;
@@ -20,7 +20,7 @@ SCENARIO("memory_very_small", "memory_very_small]"){
 		}
 		++t;
 	}
-	REQUIRE(t == 5699290);
+	REQUIRE(t == 56972);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();

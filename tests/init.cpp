@@ -7,7 +7,7 @@ SCENARIO("mem213", "[mem213]"){
 	std::ifstream file2("4.txt");
 	std::string temp1;
 	std::string temp2;
-	rewind("sorted.txt");
+	file1.seekg (0, ios::beg);
 	bool Q = true;
 	size_t t = 0;
 	while (!file1.eof() && !file2.eof()) {

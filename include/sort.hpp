@@ -26,7 +26,7 @@ auto piece(std::string const name, size_t memory_) -> size_t //разделяе�
 	std::vector<std::string> str;
 	size_t t = 0;
 	while (!file.eof()) {
-		tempfile.open((toString(t + memory_ * 100000)));
+		tempfile.open((toString(t + memory_ * 1000)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
 			if (file.eof()) break;
 			std::getline(file, temp);
@@ -105,16 +105,16 @@ auto allsort(std::string filename_, size_t memory_) -> void
 	size_t mem_ = memory_;
 	while (num_ != 1) {
 		for (size_t t = 0; t < num_ / 2; ++t) {
-			merge2(toString(mem_ * 100000 + 2 * t), toString(mem_ * 100000 + 2 * t + 1), toString(t + mem_ * 200000));
+			merge2(toString(mem_ * 1000 + 2 * t), toString(mem_ * 1000 + 2 * t + 1), toString(t + mem_ * 2000));
 		}
 		if (num_ % 2 == 1) {
-			merge2(toString(mem_ * 200000), toString(mem_ * 100000 + num_ - 1), toString(mem_ * 200000));
+			merge2(toString(mem_ * 2000), toString(mem_ * 1000 + num_ - 1), toString(mem_ * 2000));
 		}
 		mem_ *= 2;
 		num_ /= 2;
 	}
 	remove("sorted.txt");
-	rename(toString(mem_ * 100000).c_str(), "sorted.txt");
+	rename(toString(mem_ * 1000).c_str(), "sorted.txt");
 }
 
 /*void main(int argc, char* argv[])

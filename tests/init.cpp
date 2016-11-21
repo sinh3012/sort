@@ -3,7 +3,7 @@
 
 SCENARIO("memory_very_small", "memory_very_small]"){
   	allsort("name1.txt", 3);
-	/*std::ifstream file1("sorted.txt");
+	std::ifstream file1("sorted.txt");
 	std::string temp1;
 	size_t t = 0;
 	std::getline(file1, temp1);
@@ -12,7 +12,7 @@ SCENARIO("memory_very_small", "memory_very_small]"){
 		++t;
 	}
 	REQUIRE(t == 1069553);
-  	file1.close();*/
+  	file1.close();
 }
 /*
 SCENARIO("memory_small", "memory_small]"){

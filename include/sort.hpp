@@ -109,7 +109,7 @@ auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile)
 	rename("temp.txt", strtempfile.c_str());
 }
 
-auto allsort(std::string filename_, size_t memory_) -> void
+auto allsort(std::string filename_, size_t memory_, std::string outfile = "sorted.txt") -> void
 {
 
 	size_t num_ = piece(filename_, memory_);
@@ -124,8 +124,8 @@ auto allsort(std::string filename_, size_t memory_) -> void
 		mem_ *= 2;
 		num_ /= 2;
 	}
-	remove("sorted.txt");
-	rename(toString(mem_ * 100000).c_str(), "sorted.txt");
+	remove(outfile);
+	rename(toString(mem_ * 100000).c_str(), outfile.c_str());
 }
 /*
 void main(int argc, char* argv[])

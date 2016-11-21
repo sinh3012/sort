@@ -2,7 +2,7 @@
 #include <catch.hpp>
 
 SCENARIO("memory_very_small", "memory_very_small]"){
-  	allsort("name1.txt", 2);
+  	allsort("name1.txt", 3);
 	std::ifstream file1("sorted.txt");
 	std::string temp1;
 	size_t t = 0;

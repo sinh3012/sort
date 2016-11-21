@@ -9,7 +9,7 @@ SCENARIO("memory_very_small", "memory_very_small]"){
 	std::string temp2;
 	bool Q = true;
 	size_t t = 0;
-	std::getline(file1, temp1);
+	//std::getline(file1, temp1);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
@@ -34,7 +34,7 @@ SCENARIO("memory_small", "memory_small]"){
 	std::string temp2;
 	bool Q = true;
 	size_t t = 0;
-	std::getline(file1, temp1);
+	//std::getline(file1, temp1);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
@@ -84,7 +84,7 @@ SCENARIO("memory_big", "[memory_big]"){
 	std::string temp2;
 	bool Q = true;
 	size_t t = 0;
-	std::getline(file1, temp1);
+	//std::getline(file1, temp1);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);

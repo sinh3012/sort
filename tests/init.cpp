@@ -13,7 +13,6 @@ SCENARIO("memory_very_small", "memory_very_small]"){
 	}
 	REQUIRE(t == 1069553);
   	file1.close();
-  	file2.close();
 }
 /*
 SCENARIO("memory_small", "memory_small]"){

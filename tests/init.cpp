@@ -2,9 +2,9 @@
 #include <catch.hpp>
 
 SCENARIO("memory_very_small", "memory_very_small]"){
-  	allsort("name.txt", 1);
+  	allsort("name1.txt", 1);
 	std::ifstream file1("sorted.txt");
-	std::ifstream file2("name_test.txt");
+	std::ifstream file2("name1_test.txt");
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;

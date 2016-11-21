@@ -26,13 +26,12 @@ auto size(std::string filename) -> size_t
 
 auto byString(const std::string& a, std::string& b) -> bool { return a < b; }
 
-auto piece(std::string const name, size_t memorymbyte_) -> size_t
+auto piece(std::string const name, size_t memory_) -> size_t
 {
 	std::ifstream file(name);
 	if (!file.is_open()) throw("no_file");
 	std::ofstream tempfile;
 	std::string temp;
-	size_t memory_ = memorymbyte_ * 1024 * 1024 * 8 / sizeof(std::string);
 	std::vector<std::string> str;
 	size_t t = 0;
 	while (!file.eof()) {
@@ -112,9 +111,9 @@ auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile)
 
 auto allsort(std::string filename_, size_t memorymbyte_, std::string outfile = "sorted.txt") -> void
 {
-
-	size_t num_ = piece(filename_, memorymbyte_);
 	size_t mem_ = memorymbyte_ * 1024 * 1024 * 8 / sizeof(std::string);
+	size_t num_ = piece(filename_, mem_);
+
 	while (num_ != 1) {
 		for (size_t t = 0; t < num_ / 2; ++t) {
 			merge2(toString(mem_ * 100000 + 2 * t), toString(mem_ * 100000 + 2 * t + 1), toString(t + mem_ * 200000));

@@ -23,12 +23,9 @@ SCENARIO("file_small", "file_small]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
-		if (t > 422453) {
-			REQUIRE(temp1 != "ef");
-		}
 		++t;
 	}
-	REQUIRE(t == 422453+1);
+	REQUIRE(t == 422492+1);
   	file1.close();
 }
 SCENARIO("file_normal", "file_normal]"){
@@ -39,9 +36,6 @@ SCENARIO("file_normal", "file_normal]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
-		if (t > 791948) {
-			REQUIRE(temp1 != "ef");
-		}
 		++t;
 	}
 	REQUIRE(t == 791948+1);

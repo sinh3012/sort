@@ -1,6 +1,19 @@
 #include "sort.hpp"
 #include <catch.hpp>
 
+  SCENARIO("memory_very_small", "memory_very_small]"){
+  	allsort("name1.txt", 3);
+  	std::ifstream file1("sorted.txt");
+  	std::string temp1;
+  	size_t t = 0;
+ 	std::getline(file1, temp1);
+ 	while (!file1.eof()) {
+  		std::getline(file1, temp1);
+  		++t;
+  	}
+	REQUIRE(t == 1069553);
+    	file1.close();
+  /*
 SCENARIO("file_small", "file_small]"){
   	allsort("8", 2);
 	std::ifstream file1("sorted.txt");
@@ -45,3 +58,4 @@ SCENARIO("file_big", "file_big]"){
 	REQUIRE(t == 1637032);
   	file1.close();
 }
+*/

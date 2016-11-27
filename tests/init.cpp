@@ -15,7 +15,7 @@ SCENARIO("file_small", "file_small]"){
 		if (temp1 != temp2) {
 			REQUIRE(temp1 != temp2);
       			Q = false;
-      			break;
+      			//break;
 		}
 	}
 	REQUIRE(t == 422453);

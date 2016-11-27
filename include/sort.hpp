@@ -69,7 +69,7 @@ auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
 		std::getline(*files[t], temp);
 		q.push(file_str(files[t], temp));
 	}
-	while (q.size() != 1) {
+	while (!q.empty()) {
 		file_str fs = q.top();
 		tempfile << fs.str_ << std::endl;
 		q.pop();
@@ -79,10 +79,6 @@ auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
 		}
 		else (*fs.file_).close();
 	}
-	file_str fs = q.top();
-	tempfile << fs.str_;
-	q.pop();
-	(*fs.file_).close();
 	for (size_t t = 0; t < piece_; ++t) {
 		delete files[t];
 		remove(toString(t + memory_ * 100000).c_str());

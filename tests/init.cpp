@@ -7,7 +7,7 @@ SCENARIO("file_small", "file_small]"){
 	std::string temp1;
 	size_t t = 0;
 	std::getline(file1, temp1);
-	while(!file1.eof())
+	while(!file1.eof()) {
 		std::getline(file1, temp1);
 		++t;
 	}
@@ -20,7 +20,7 @@ SCENARIO("file_normal", "file_normal]"){
 	std::string temp1;
 	size_t t = 0;
 	std::getline(file1, temp1);
-	while(!file1.eof())
+	while(!file1.eof()) {
 		std::getline(file1, temp1);
 		++t;
 	}
@@ -33,7 +33,7 @@ SCENARIO("file_big", "file_big]"){
 	std::string temp1;
 	size_t t = 0;
 	std::getline(file1, temp1);
-	while(!file1.eof())
+	while(!file1.eof()) {
 		std::getline(file1, temp1);
 		++t;
 	}

@@ -11,7 +11,7 @@
 #include <stdio.h>
 #include <queue>
 //#include <windows.h>
-#include <forward_list>
+//#include <forward_list>
 
 template <typename T>
 auto toString(T value) -> std::string
@@ -21,26 +21,39 @@ auto toString(T value) -> std::string
 	return oss.str();
 }
 
-auto piece(std::string const name, size_t memory_) -> size_t
+struct mydata
+{
+	std::string fn;
+	std::string ln;
+	short y;
+};
+
+auto operator < (const mydata& d1, const mydata& d2) -> bool { return d1.fn < d2.fn; }
+
+auto operator > (const mydata& d1, const mydata& d2) -> bool { return d1.fn > d2.fn; }
+
+auto piecenew(std::string const name, size_t memory_) -> size_t
 {
 	std::ifstream file(name);
 	if (!file.is_open()) throw("no_file");
 	std::ofstream tempfile;
-	std::string temp;
-	std::vector<std::string> str;
+	mydata temp;
+	std::vector<mydata> str;
 	size_t t = 0;
 	while (!file.eof()) {
 		tempfile.open((toString(t + memory_ * 100000)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
 			if (file.eof()) break;
-			std::getline(file, temp);
+			file >> temp.ln;
+			file >> temp.fn;
+			file >> temp.y;
 			str.push_back(temp);
 		}
 		std::sort(str.begin(), str.end());
 		for (size_t tt = 0; tt < str.size() - 1; ++tt) {
-			tempfile << str[tt] << std::endl;
+			tempfile << str[tt].ln << ' ' << str[tt].fn << ' ' << str[tt].y << std::endl;
 		}
-		tempfile << str[str.size() - 1];
+		tempfile << str[str.size() - 1].ln << ' ' << str[str.size() - 1].fn << ' ' << str[str.size() - 1].y;
 		str.clear();
 		tempfile.close();
 		++t;
@@ -49,33 +62,37 @@ auto piece(std::string const name, size_t memory_) -> size_t
 	return t;
 }
 
-struct file_str
+struct file_d
 {
-	file_str(std::ifstream* file, std::string& str) : file_(file), str_(str) {}
+	file_d(std::ifstream* file, mydata data) : file_(file), data_(data) {}
 	std::ifstream* file_;
-	std::string str_;
+	mydata data_;
 };
 
-auto operator < (const file_str& fs1, const file_str& fs2) -> bool { return fs1.str_ > fs2.str_; }
+auto operator < (const file_d& fd1, const file_d& fd2) -> bool { return fd1.data_ > fd2.data_; }
 
-auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
+auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 {
 	std::ifstream** files = new std::ifstream*[piece_];
 	std::ofstream tempfile("temp.txt");
-	std::string temp;
-	std::priority_queue<file_str> q;
+	mydata d;
+	std::priority_queue<file_d> q;
 	for (size_t t = 0; t < piece_; ++t) {
 		files[t] = new std::ifstream(toString(t + memory_ * 100000));
-		std::getline(*files[t], temp);
-		q.push(file_str(files[t], temp));
+		*files[t] >> d.ln;
+		*files[t] >> d.fn;
+		*files[t] >> d.y;
+		q.push(file_d(files[t], d));
 	}
 	while (!q.empty()) {
-		file_str fs = q.top();
-		tempfile << fs.str_ << std::endl;
+		file_d fs = q.top();
+		tempfile << fs.data_.ln << ' ' << fs.data_.fn << ' ' << fs.data_.y << std::endl;
 		q.pop();
 		if (!(*fs.file_).eof()) {
-			std::getline(*fs.file_, temp);
-			q.push(file_str(fs.file_, temp));
+			*fs.file_ >> d.ln;
+			*fs.file_ >> d.fn;
+			*fs.file_ >> d.y;
+			q.push(file_d(fs.file_, d));
 		}
 		else (*fs.file_).close();
 	}
@@ -89,10 +106,11 @@ auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	rename("temp.txt", strtempfile.c_str());
 }
 
+
 auto allsort(std::string filename_, size_t memorymbyte_, std::string outfile = "sorted.txt") -> void
 {
-	size_t mem_ = memorymbyte_ * 1024 * 512 / sizeof(std::string);
-	merge(mem_, piece(filename_, mem_), outfile);
+	size_t mem_ = memorymbyte_ * 1024 * 1024 / (2 * sizeof(std::string) + sizeof(short));
+	mergenew(mem_, piecenew(filename_, mem_), outfile);
 }
 /*
 void main(int argc, char* argv[])

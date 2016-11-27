@@ -10,7 +10,7 @@ SCENARIO("file_small", "file_small]"){
 	bool Q = true;
 	size_t t = 0;
 	std::getline(file1, temp1);
-	while (!file1.eof() && !file2.eof()) {
+	for (size t = 0; t < 422453; ++t) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
 		if (temp1 != temp2) {
@@ -18,7 +18,6 @@ SCENARIO("file_small", "file_small]"){
       			Q = false;
       			break;
 		}
-		++t;
 	}
 	REQUIRE(t == 422453);
   	REQUIRE(Q);

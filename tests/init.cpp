@@ -28,7 +28,7 @@ SCENARIO("file_normal", "file_normal]"){
 		if (t > 791948) {
 			REQUIRE(temp1 != "ef");
 		}
-		++t
+		++t;
 	}
 	REQUIRE(t == 791948);
   	file1.close();

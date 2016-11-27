@@ -20,7 +20,7 @@ SCENARIO("file_small", "file_small]"){
 		}
 		m=t;
 	}
-	REQUIRE(t == 422453);
+	REQUIRE(m == 422453);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();

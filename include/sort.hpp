@@ -82,7 +82,7 @@ auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
 		delete files[t];
 		remove(toString(t + memory_ * 100000).c_str());
 	}
-	delete files;
+	delete[] files;
 	remove(strtempfile.c_str());
 	tempfile.close();
 	rename("temp.txt", strtempfile.c_str());

@@ -11,7 +11,7 @@ SCENARIO("file_small", "file_small]"){
 		std::getline(file1, temp1);
 		++t;
 	}
-	REQUIRE(t == 422492+1);
+	REQUIRE(t == 422491+1);
   	file1.close();
 }
 
@@ -25,7 +25,7 @@ SCENARIO("file_normal", "file_normal]"){
 		std::getline(file1, temp1);
 		++t;
 	}
-	REQUIRE(t == 792011+1);
+	REQUIRE(t == 792010+1);
   	file1.close();
 }
 /*

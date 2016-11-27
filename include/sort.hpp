@@ -43,10 +43,10 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 	while (!file.eof()) {
 		tempfile.open((toString(t + memory_ * 100000)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
-			if (file.eof()) break;
 			file >> temp.ln;
 			file >> temp.fn;
 			file >> temp.y;
+			if (file.eof()) break;
 			str.push_back(temp);
 		}
 		std::sort(str.begin(), str.end());

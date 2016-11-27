@@ -1,6 +1,3 @@
-// sort.cpp: определяет точку входа для консольного приложения.
-//
-
 //#include "stdafx.h"
 #include <string>
 #include <vector>
@@ -9,6 +6,7 @@
 #include <sstream>
 #include <algorithm>
 #include <stdio.h>
+#include <queue>
 //#include <windows.h>
 
 template <typename T>
@@ -18,14 +16,6 @@ auto toString(T value) -> std::string
 	oss << value << "_temp.txt";
 	return oss.str();
 }
-
-auto size(std::string filename) -> size_t
-{
-	return 0;
-}
-
-auto byString(const std::string& a, std::string& b) -> bool { return a < b; }
-
 auto piece(std::string const name, size_t memory_) -> size_t
 {
 	std::ifstream file(name);
@@ -41,7 +31,7 @@ auto piece(std::string const name, size_t memory_) -> size_t
 			std::getline(file, temp);
 			str.push_back(temp);
 		}
-		std::sort(str.begin(), str.end(), byString);
+		std::sort(str.begin(), str.end());
 		for (size_t tt = 0; tt < str.size() - 1; ++tt) {
 			tempfile << str[tt] << std::endl;
 		}
@@ -54,56 +44,44 @@ auto piece(std::string const name, size_t memory_) -> size_t
 	return t;
 }
 
-auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile) -> void
+struct file_str
 {
-	std::ifstream file1(strfile1);
-	std::ifstream file2(strfile2);
+	file_str(std::ifstream* file, std::string& str) : file_(file), str_(str) {}
+	std::ifstream* file_;
+	std::string str_;
+};
+
+auto operator < (const file_str& fs1, const file_str& fs2) -> bool { return fs1.str_ > fs2.str_; }
+
+auto merge(size_t memory_, size_t piece_, std::string strtempfile) -> void
+{
+	std::ifstream** files = new std::ifstream*[piece_];
 	std::ofstream tempfile("temp.txt");
-	std::string temp1;
-	std::string temp2;
-	std::getline(file1, temp1);
-	std::getline(file2, temp2);
-	bool k1 = true, k2 = true;
-	while (k1 && k2) {
-		if (byString(temp1, temp2)) {
-			tempfile << temp1 << std::endl;
-			k1 = false;
-			if (!file1.eof()) {
-				std::getline(file1, temp1);
-				k1 = true;
-			}
-		}
-		else {
-			tempfile << temp2 << std::endl;
-			k2 = false;
-			if (!file2.eof()) {
-				std::getline(file2, temp2);
-				k2 = true;
-			}
-		}
+	std::string temp;
+	std::priority_queue<file_str> q;
+	for (size_t t = 0; t < piece_; ++t) {
+		files[t] = new std::ifstream(toString(t + memory_ * 100000));
+		std::getline(*files[t], temp);
+		q.push(file_str(files[t], temp));
 	}
-	while (k1) {
-		tempfile << temp1;
-		k1 = false;
-		if (!file1.eof()) {
-			tempfile << std::endl;
-			std::getline(file1, temp1);
-			k1 = true;
+	while (q.size!=1) {
+		file_str fs = q.top();
+		tempfile << fs.str_ << std::endl;
+		q.pop();
+		if (!(*fs.file_).eof()) {
+			std::getline(*fs.file_, temp);
+			q.push(file_str(fs.file_, temp));
 		}
+		else (*fs.file_).close();
 	}
-	while (k2) {
-		tempfile << temp2;
-		k2 = false;
-		if (!file2.eof()) {
-			tempfile << std::endl;
-			std::getline(file2, temp2);
-			k2 = true;
-		}
+	file_str fs = q.top();
+	tempfile << fs.str_;
+	q.pop();
+	(*fs.file_).close();
+	for (size_t t = 0; t < piece_; ++t) {
+		delete files[t];
+		remove(toString(t + memory_ * 100000).c_str());
 	}
-	file1.close();
-	file2.close();
-	remove(strfile1.c_str());
-	remove(strfile2.c_str());
 	remove(strtempfile.c_str());
 	tempfile.close();
 	rename("temp.txt", strtempfile.c_str());
@@ -112,26 +90,13 @@ auto merge2(std::string strfile1, std::string strfile2, std::string strtempfile)
 auto allsort(std::string filename_, size_t memorymbyte_, std::string outfile = "sorted.txt") -> void
 {
 	size_t mem_ = memorymbyte_ * 1024 * 1024 / sizeof(std::string);
-	size_t num_ = piece(filename_, mem_);
-
-	while (num_ != 1) {
-		for (size_t t = 0; t < num_ / 2; ++t) {
-			merge2(toString(mem_ * 100000 + 2 * t), toString(mem_ * 100000 + 2 * t + 1), toString(t + mem_ * 200000));
-		}
-		if (num_ % 2 == 1) {
-			merge2(toString(mem_ * 200000), toString(mem_ * 100000 + num_ - 1), toString(mem_ * 200000));
-		}
-		mem_ *= 2;
-		num_ /= 2;
-	}
-	remove(outfile.c_str());
-	rename(toString(mem_ * 100000).c_str(), outfile.c_str());
+	merge(mem_, piece(filename_, mem_), outfile);
 }
 /*
 void main(int argc, char* argv[])
 {
-	//SetConsoleCP(1251);
-	//SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
 	if (argc == 3) {
 		allsort(static_cast<std::string>(argv[1]), std::atoi(argv[2]));
 		system("pause");
@@ -160,3 +125,4 @@ void main(int argc, char* argv[])
 		system("pause");
 	}
 }*/
+

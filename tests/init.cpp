@@ -13,6 +13,7 @@
   	}
 	REQUIRE(t == 1069553);
     	file1.close();
+  }
   /*
 SCENARIO("file_small", "file_small]"){
   	allsort("8", 2);

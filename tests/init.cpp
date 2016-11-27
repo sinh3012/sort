@@ -9,7 +9,10 @@ SCENARIO("file_small", "file_small]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
-		++t;
+		if (temp1!="") {
+			++t;
+		}
+		else break;
 	}
 	REQUIRE(t == 422453);
   	file1.close();
@@ -22,7 +25,10 @@ SCENARIO("file_normal", "file_normal]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
-		++t;
+		if (temp1!="") {
+			++t;
+		}
+		else break;
 	}
 	REQUIRE(t == 791948);
   	file1.close();
@@ -35,7 +41,10 @@ SCENARIO("file_big", "file_big]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
-		++t;
+		if (temp1!="") {
+			++t;
+		}
+		else break;
 	}
 	REQUIRE(t == 1637032);
   	file1.close();

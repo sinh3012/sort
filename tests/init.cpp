@@ -9,7 +9,7 @@ SCENARIO("file_small", "file_small]"){
 	std::string temp2;
 	bool Q = true;
 	size_t t = 0;
-	std::getline(file2, temp2);
+	std::getline(file1, temp1);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
@@ -34,7 +34,6 @@ SCENARIO("file_normal", "file_normal]"){
 	bool Q = true;
 	size_t t = 0;
 	std::getline(file1, temp1);
-	std::getline(file2, temp2);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
@@ -45,7 +44,7 @@ SCENARIO("file_normal", "file_normal]"){
 		}
 		++t;
 	}
-	REQUIRE(t == 422453);
+	REQUIRE(t == 791948);
   	REQUIRE(Q);
   	file1.close();
   	file2.close();
@@ -59,8 +58,7 @@ SCENARIO("memory_20", "memory_20]"){
 	std::string temp2;
 	bool Q = true;
 	size_t t = 0;
-	//std::getline(file1, temp1);
-	std::getline(file2, temp2);
+	std::getline(file1, temp1);
 	while (!file1.eof() && !file2.eof()) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);

@@ -1,3 +1,6 @@
+// sort.cpp: определяет точку входа для консольного приложения.
+//
+
 //#include "stdafx.h"
 #include <string>
 #include <vector>
@@ -8,6 +11,7 @@
 #include <stdio.h>
 #include <queue>
 //#include <windows.h>
+#include <forward_list>
 
 template <typename T>
 auto toString(T value) -> std::string
@@ -16,6 +20,7 @@ auto toString(T value) -> std::string
 	oss << value << "_temp.txt";
 	return oss.str();
 }
+
 auto piece(std::string const name, size_t memory_) -> size_t
 {
 	std::ifstream file(name);
@@ -126,4 +131,3 @@ void main(int argc, char* argv[])
 		system("pause");
 	}
 }*/
-

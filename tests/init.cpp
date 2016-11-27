@@ -8,9 +8,8 @@ SCENARIO("file_small", "file_small]"){
 	std::string temp1;
 	std::string temp2;
 	bool Q = true;
-	size_t t = 0;
 	std::getline(file1, temp1);
-	for (size t = 0; t < 422453; ++t) {
+	for (size_t t = 0; t < 422453; ++t) {
 		std::getline(file1, temp1);
 		std::getline(file2, temp2);
 		if (temp1 != temp2) {

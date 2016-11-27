@@ -39,6 +39,7 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 	std::ofstream tempfile;
 	mydata temp;
 	std::vector<mydata> str;
+	str.reserve(memory_);
 	size_t t = 0;
 	while (!file.eof()) {
 		tempfile.open((toString(t + memory_ * 100000)));

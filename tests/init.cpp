@@ -7,7 +7,7 @@ SCENARIO("file_small", "file_small]"){
   	allsort("8", 1);
 	auto end = std::chrono::system_clock::now();
 	std:: cout << "8mb time: ";
-	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;
 	std::ifstream file1("sorted.txt");
 	std::string temp1;
 	size_t t = 0;
@@ -25,7 +25,7 @@ SCENARIO("file_normal", "file_normal]"){
   	allsort("15", 4);
 	auto end = std::chrono::system_clock::now();
 	std:: cout << "15mb time: ";
-	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;
 	std::ifstream file1("sorted.txt");
 	std::string temp1;
 	size_t t = 0;
@@ -43,7 +43,7 @@ SCENARIO("file_big", "file_big]"){
   	allsort("32", 17);
 	auto end = std::chrono::system_clock::now();
 	std:: cout << "32mb time: ";
-	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count();
+	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;
 	std::ifstream file1("sorted.txt");
 	std::string temp1;
 	size_t t = 0;

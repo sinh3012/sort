@@ -42,7 +42,7 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 	str.reserve(memory_);
 	size_t t = 0;
 	while (!file.eof()) {
-		tempfile.open((toString(t + memory_ * 100000)));
+		tempfile.open((toString(t)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
 			file >> temp.ln;
 			file >> temp.fn;
@@ -79,7 +79,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	mydata d;
 	std::priority_queue<file_d> q;
 	for (size_t t = 0; t < piece_; ++t) {
-		files[t] = new std::ifstream(toString(t + memory_ * 100000));
+		files[t] = new std::ifstream(toString(t));
 		*files[t] >> d.ln;
 		*files[t] >> d.fn;
 		*files[t] >> d.y;
@@ -99,7 +99,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	}
 	for (size_t t = 0; t < piece_; ++t) {
 		delete files[t];
-		remove(toString(t + memory_ * 100000).c_str());
+		remove(toString(t).c_str());
 	}
 	delete[] files;
 	remove(strtempfile.c_str());

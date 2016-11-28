@@ -37,6 +37,7 @@ SCENARIO("file_big", "file_big]"){
 	std::getline(file1, temp1);
 	while(!file1.eof()) {
 		std::getline(file1, temp1);
+		++t;
 	}
 	REQUIRE(t == 1637032+1);
   	file1.close();

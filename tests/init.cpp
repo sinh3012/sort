@@ -28,7 +28,7 @@ SCENARIO("file_normal", "file_normal]"){
 	REQUIRE(t == 792010+1);
   	file1.close();
 }
-/*
+
 SCENARIO("file_big", "file_big]"){
   	allsort("32", 17);
 	std::ifstream file1("sorted.txt");
@@ -40,4 +40,4 @@ SCENARIO("file_big", "file_big]"){
 	}
 	REQUIRE(t == 1637032+1);
   	file1.close();
-}*/
+}

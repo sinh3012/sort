@@ -20,7 +20,7 @@ auto toString(T value) -> std::string
 	return oss.str();
 }
 
-struct mydata
+/*struct mydata
 {
 	std::string fn;
 	std::string ln;
@@ -30,28 +30,28 @@ struct mydata
 auto operator < (const mydata& d1, const mydata& d2) -> bool { return d1.fn < d2.fn; }
 
 auto operator > (const mydata& d1, const mydata& d2) -> bool { return d1.fn > d2.fn; }
-
+*/
 auto piecenew(std::string const name, size_t memory_) -> size_t
 {
 	std::ifstream file(name);
 	if (!file.is_open()) throw("no_file");
 	std::ofstream tempfile;
-	mydata temp;
-	std::vector<mydata> str;
+	std::string tempstr;
+	std::vector<std::string> str;
 	str.reserve(memory_);
 	size_t t = 0;
 	while (!file.eof()) {
 		tempfile.open((toString(t)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
-			file >> temp.ln >> temp.fn >> temp.y;
+			std::getline(file, tempstr);
 			if (file.eof()) break;
-			str.push_back(temp);
+			str.push_back(tempstr);
 		}
 		std::sort(str.begin(), str.end());
 		for (size_t tt = 0; tt < str.size() - 1; ++tt) {
-			tempfile << str[tt].ln << ' ' << str[tt].fn << ' ' << str[tt].y << "\n";
+			tempfile << str[tt] << "\n";
 		}
-		tempfile << str[str.size() - 1].ln << ' ' << str[str.size() - 1].fn << ' ' << str[str.size() - 1].y;
+		tempfile << str[str.size() - 1];
 		str.clear();
 		tempfile.close();
 		++t;
@@ -64,7 +64,7 @@ struct file_d
 {
 	file_d(std::ifstream* file, mydata data) : file_(file), data_(data) {}
 	std::ifstream* file_;
-	mydata data_;
+	std::string data_;
 };
 
 auto operator < (const file_d& fd1, const file_d& fd2) -> bool { return fd1.data_ > fd2.data_; }
@@ -73,19 +73,19 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 {
 	std::ifstream** files = new std::ifstream*[piece_];
 	std::ofstream tempfile("temp.txt");
-	mydata d;
+	std::string d;
 	std::priority_queue<file_d> q;
 	for (size_t t = 0; t < piece_; ++t) {
 		files[t] = new std::ifstream(toString(t));
-		*files[t] >> d.ln >> d.fn >> d.y;
+		*files[t] >> d;
 		q.push(file_d(files[t], d));
 	}
 	while (!q.empty()) {
 		file_d fs = q.top();
-		tempfile << fs.data_.ln << ' ' << fs.data_.fn << ' ' << fs.data_.y << "\n";
+		tempfile << fs.data_ << "\n";
 		q.pop();
 		if (!(*fs.file_).eof()) {
-			*fs.file_ >> d.ln >> d.fn >> d.y;
+			*fs.file_ >> d;
 			q.push(file_d(fs.file_, d));
 		}
 		else (*fs.file_).close();

@@ -44,9 +44,7 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 	while (!file.eof()) {
 		tempfile.open((toString(t)));
 		for (size_t tt = 0; tt < memory_; ++tt) {
-			file >> temp.ln;
-			file >> temp.fn;
-			file >> temp.y;
+			file >> temp.ln >> temp.fn >> temp.y;
 			if (file.eof()) break;
 			str.push_back(temp);
 		}
@@ -80,9 +78,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	std::priority_queue<file_d> q;
 	for (size_t t = 0; t < piece_; ++t) {
 		files[t] = new std::ifstream(toString(t));
-		*files[t] >> d.ln;
-		*files[t] >> d.fn;
-		*files[t] >> d.y;
+		*files[t] >> d.ln >> d.fn >> d.y;
 		q.push(file_d(files[t], d));
 	}
 	while (!q.empty()) {
@@ -90,9 +86,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 		tempfile << fs.data_.ln << ' ' << fs.data_.fn << ' ' << fs.data_.y << "\n";
 		q.pop();
 		if (!(*fs.file_).eof()) {
-			*fs.file_ >> d.ln;
-			*fs.file_ >> d.fn;
-			*fs.file_ >> d.y;
+			*fs.file_ >> d.ln >> d.fn >> d.y;
 			q.push(file_d(fs.file_, d));
 		}
 		else (*fs.file_).close();

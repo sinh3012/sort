@@ -52,7 +52,7 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 		}
 		std::sort(str.begin(), str.end());
 		for (size_t tt = 0; tt < str.size() - 1; ++tt) {
-			tempfile << str[tt].ln << ' ' << str[tt].fn << ' ' << str[tt].y << std::endl;
+			tempfile << str[tt].ln << ' ' << str[tt].fn << ' ' << str[tt].y << "\n";
 		}
 		tempfile << str[str.size() - 1].ln << ' ' << str[str.size() - 1].fn << ' ' << str[str.size() - 1].y;
 		str.clear();
@@ -87,7 +87,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	}
 	while (!q.empty()) {
 		file_d fs = q.top();
-		tempfile << fs.data_.ln << ' ' << fs.data_.fn << ' ' << fs.data_.y << std::endl;
+		tempfile << fs.data_.ln << ' ' << fs.data_.fn << ' ' << fs.data_.y << "\n";
 		q.pop();
 		if (!(*fs.file_).eof()) {
 			*fs.file_ >> d.ln;

@@ -105,7 +105,9 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 auto allsort(std::string filename_, size_t memorymbyte_, std::string outfile = "sorted.txt") -> void
 {
 	size_t mem_ = memorymbyte_ * 1024 * 1024 / (2 * sizeof(std::string) + sizeof(short));
-	std::cout << (2 * sizeof(std::string) + sizeof(short)) << std::endl;
+	std::cout << sizeof(std::string) << std::endl;
+	std::cout << 2*sizeof(std::string) << std::endl;
+	std::cout << sizeof(short)) << std::endl;
 	mem_ = mem_ / 4;
 	mergenew(mem_, piecenew(filename_, mem_), outfile);
 }

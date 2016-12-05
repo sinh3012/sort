@@ -40,7 +40,7 @@ SCENARIO("file_normal", "file_normal]"){
 
 SCENARIO("file_big", "file_big]"){
 	auto start = std::chrono::system_clock::now();
-  	allsort("32", 17);
+  	allsort("32", 16);
 	auto end = std::chrono::system_clock::now();
 	std:: cout << "32mb time: ";
 	std::cout << std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count() << std::endl;

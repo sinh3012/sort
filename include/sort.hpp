@@ -77,7 +77,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	std::priority_queue<file_d> q;
 	for (size_t t = 0; t < piece_; ++t) {
 		files[t] = new std::ifstream(toString(t));
-		*files[t] >> d;
+		std::getline(*files[t], d);
 		q.push(file_d(files[t], d));
 	}
 	while (!q.empty()) {

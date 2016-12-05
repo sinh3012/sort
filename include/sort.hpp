@@ -43,13 +43,13 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 	size_t t = 0;
 	while (!file.eof()) {
 		tempfile.open((toString(t)));
-		for (register size_t tt = 0; tt < memory_; ++tt) {
+		for (size_t tt = 0; tt < memory_; ++tt) {
 			file >> temp.ln >> temp.fn >> temp.y;
 			if (file.eof()) break;
 			str.push_back(temp);
 		}
 		std::sort(str.begin(), str.end());
-		for (register size_t tt = 0; tt < str.size() - 1; ++tt) {
+		for (size_t tt = 0; tt < str.size() - 1; ++tt) {
 			tempfile << str[tt].ln << ' ' << str[tt].fn << ' ' << str[tt].y << "\n";
 		}
 		tempfile << str[str.size() - 1].ln << ' ' << str[str.size() - 1].fn << ' ' << str[str.size() - 1].y;
@@ -76,7 +76,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 	std::ofstream tempfile("temp.txt");
 	mydata d;
 	std::priority_queue<file_d> q;
-	for (register size_t t = 0; t < piece_; ++t) {
+	for (size_t t = 0; t < piece_; ++t) {
 		files[t] = new std::ifstream(toString(t));
 		*files[t] >> d.ln >> d.fn >> d.y;
 		q.push(file_d(files[t], d));
@@ -91,7 +91,7 @@ auto mergenew(size_t memory_, size_t piece_, std::string strtempfile) -> void
 		}
 		else (*fs.file_).close();
 	}
-	for (register size_t t = 0; t < piece_; ++t) {
+	for (size_t t = 0; t < piece_; ++t) {
 		delete files[t];
 		remove(toString(t).c_str());
 	}

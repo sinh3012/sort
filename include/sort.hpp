@@ -62,7 +62,7 @@ auto piecenew(std::string const name, size_t memory_) -> size_t
 
 struct file_d
 {
-	file_d(std::ifstream* file, mydata data) : file_(file), data_(data) {}
+	file_d(std::ifstream* file, std::string data) : file_(file), data_(data) {}
 	std::ifstream* file_;
 	std::string data_;
 };
